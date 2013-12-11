@@ -1,0 +1,65 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+<script type="text/javascript">
+    function BiasViewModel(biasReport) {
+        var self = this;
+        self.biasRows = ko.observableArray(ko.utils.arrayMap(biasReport.BiasRows, function (biasRow) {
+            return {
+                ticker: ko.observable(biasRow.ticker),
+                tradeCount: ko.observable(biasRow.tradeCount)
+            };
+        }));
+        
+        self.biasSessionId = ko.observable(biasReport.BiasSessionId);
+
+        self.tradeValueChanged = function(biasRow) {
+            biasRow.ticker("BBB");
+        };
+        
+        self.computedRemoteField = ko.computed(function () {
+            var data;
+            $.postJSON("/api/BiasTrade", data, function(callBackData) {
+                //self.anotherRemoteField(callBackData);
+            });
+        }, this);
+    }
+    
+
+    
+    var biasRows = [
+        { ticker: "A",tradeCount:2 },
+        { ticker: "B",tradeCount:0 }
+    ];
+    
+
+    jQuery.extend({
+        postJSON: function (url, data, callback) {
+            return jQuery.post(url, data, callback, "json");
+        }
+    });
+
+    $(window).load(function () {
+        //TODO:Get bias data from the server
+        //TODO: handle bias row changes.
+        $.getJSON("/api/BiasReport/1", function (callbackData) {
+            
+            var vm = new BiasViewModel(callbackData);
+            ko.applyBindings(vm);
+        });
+     
+
+    });
+    
+
+
+</script>
+<h2>Index</h2>
+<form method="POST">
+ 
+    
+    
+    <div data-bind="foreach: biasRows">
+        <div><span data-bind="text:ticker"></span><input type="text" data-bind="value:tradeCount, valueUpdate: 'keyup', event: { change: $parent.tradeValueChanged } "/></div>
+    </div>
+</form>
