@@ -6,31 +6,27 @@
         var self = this;
         self.biasRows = ko.observableArray(ko.utils.arrayMap(biasReport.BiasRows, function (biasRow) {
             return {
-                ticker: ko.observable(biasRow.ticker),
-                tradeCount: ko.observable(biasRow.tradeCount)
+                ticker: ko.observable(biasRow.Ticker),
+                tradeCount: ko.observable(biasRow.TradeCount)
             };
         }));
         
         self.biasSessionId = ko.observable(biasReport.BiasSessionId);
 
-        self.tradeValueChanged = function(biasRow) {
-            biasRow.ticker("BBB");
+        self.tradeValueChanged = function (biasRow) {
+
+            var biasTradeEvent = { BiasSessionId: self.biasSessionId(), TradeAmount: biasRow.tradeCount, Ticker: biasRow.ticker };
+            $.postJSON("/api/BiasTrade", biasTradeEvent, function (callBackData) {
+                biasRow.ticker("asdfsadf");
+                window.alert("x");
+            });
         };
         
-        self.computedRemoteField = ko.computed(function () {
-            var data;
-            $.postJSON("/api/BiasTrade", data, function(callBackData) {
-                //self.anotherRemoteField(callBackData);
-            });
-        }, this);
     }
     
 
     
-    var biasRows = [
-        { ticker: "A",tradeCount:2 },
-        { ticker: "B",tradeCount:0 }
-    ];
+
     
 
     jQuery.extend({
@@ -54,7 +50,7 @@
 
 
 </script>
-<h2>Index</h2>
+<h2>Bias Session: <span data-bind="text: biasSessionId"></span></h2>
 <form method="POST">
  
     
