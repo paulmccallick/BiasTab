@@ -58,7 +58,7 @@
       <Project>{25ee3dad-bb1e-47b2-9414-32b19cf02426}</Project>
       <Name>BiasTab</Name>
     </ProjectReference>
-    <ProjectReference Include="..\LatencyTest\BiasTab.Web.csproj">
+    <ProjectReference Include="..\BiasTab.Web\BiasTab.Web.csproj">
       <Project>{e0e301e6-d406-4e91-a868-f99142fb13ca}</Project>
       <Name>BiasTab.Web</Name>
     </ProjectReference>

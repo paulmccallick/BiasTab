@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BiasTab.Web", "LatencyTest\BiasTab.Web.csproj", "{E0E301E6-D406-4E91-A868-F99142FB13CA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BiasTab.Web", "BiasTab.Web\BiasTab.Web.csproj", "{E0E301E6-D406-4E91-A868-F99142FB13CA}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BiasTab", "BiasTab\BiasTab.csproj", "{25EE3DAD-BB1E-47B2-9414-32B19CF02426}"
 EndProject
