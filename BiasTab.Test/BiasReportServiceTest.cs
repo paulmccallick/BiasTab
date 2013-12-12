@@ -15,23 +15,25 @@ namespace BiasTab.Test
     public class BiasReportServiceTest
     {
         [Test]
-        public void WhenTradeEventIsReceivedTradeRowIsRetrieivedUpdatedAndSaved()
+        public void WhenTradeEventIsReceivedBiasRowIsRetrieivedAndBenchmarkWeightIsCalculatedAndBiasRowIsSaved()
         {
             int biasReportSessionId = 100;
             string ticker = "A";
+            int tradeCount = 5;
             
 
             var repository = Substitute.For<IBiasReportRepository>();
             var existingBiasRow = new BiasRow {BiasSessionId = biasReportSessionId,TradeCount = 0, Ticker = "1"};
             repository.GetBiasRow(biasReportSessionId, ticker).Returns(existingBiasRow);
 
-            var tradeEvent = new BiasTradeEvent {BiasSessionId = biasReportSessionId, Ticker = ticker, TradeAmount = 5};
+            var tradeEvent = new BiasTradeEvent { BiasSessionId = biasReportSessionId, Ticker = ticker, TradeAmount = tradeCount };
 
             var service = new BiasReportService(repository);
             service.UpdateTradeRow(tradeEvent);
 
             repository.Received().SaveBiasRow(existingBiasRow);
             Assert.That(existingBiasRow.TradeCount,Is.EqualTo(5));
+            Assert.That(existingBiasRow.BenchmarkWeight, Is.EqualTo(tradeCount * .02m));
 
 
 

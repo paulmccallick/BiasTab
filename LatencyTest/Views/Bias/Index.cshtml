@@ -7,7 +7,8 @@
         self.biasRows = ko.observableArray(ko.utils.arrayMap(biasReport.BiasRows, function (biasRow) {
             return {
                 ticker: ko.observable(biasRow.Ticker),
-                tradeCount: ko.observable(biasRow.TradeCount)
+                tradeCount: ko.observable(biasRow.TradeCount),
+                benchmarkWeight: ko.observable(biasRow.BenchmarkWeight)
             };
         }));
         
@@ -16,9 +17,8 @@
         self.tradeValueChanged = function (biasRow) {
 
             var biasTradeEvent = { BiasSessionId: self.biasSessionId(), TradeAmount: biasRow.tradeCount, Ticker: biasRow.ticker };
-            $.postJSON("/api/BiasTrade", biasTradeEvent, function (callBackData) {
-                biasRow.ticker("asdfsadf");
-                window.alert("x");
+            $.postJSON("/api/BiasTrade", biasTradeEvent, function (updatedBiasRow) {
+                biasRow.benchmarkWeight(updatedBiasRow.BenchmarkWeight);
             });
         };
         
@@ -56,6 +56,6 @@
     
     
     <div data-bind="foreach: biasRows">
-        <div><span data-bind="text:ticker"></span><input type="text" data-bind="value:tradeCount, valueUpdate: 'keyup', event: { change: $parent.tradeValueChanged } "/></div>
+        <div><span data-bind="text:ticker"></span><input type="text" data-bind="value:tradeCount, valueUpdate: 'keyup', event: { change: $parent.tradeValueChanged } "/><span data-bind="text:benchmarkWeight"></span>/></div>
     </div>
 </form>

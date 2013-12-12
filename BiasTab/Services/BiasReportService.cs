@@ -26,7 +26,7 @@ namespace BiasTab.Services
         {
             var biasRow = _biasReportRepository.GetBiasRow(tradeEvent.BiasSessionId, tradeEvent.Ticker);
             biasRow.TradeCount = tradeEvent.TradeAmount;
-            //TODO: do some kind of calculation here.
+            biasRow.BenchmarkWeight = tradeEvent.TradeAmount * .02m;
             _biasReportRepository.SaveBiasRow(biasRow);
             return biasRow;
 
