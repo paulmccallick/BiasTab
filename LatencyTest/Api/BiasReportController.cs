@@ -13,9 +13,9 @@ namespace BiasTab.Web.Api
             _biasReportRepository = biasReportRepository;
         }
 
-        public BiasReport GetBiasReport(int biasReportSessionId)
+        public BiasReport GetBiasReportById(int id)
         {
-            return _biasReportRepository.GetBiasReport(biasReportSessionId);
+            return _biasReportRepository.GetBiasReport(id);
         }
     }
 }

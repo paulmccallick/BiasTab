@@ -11,5 +11,10 @@ namespace BiasTab.Models
         public decimal PortfolioMarketValue { get; set; }
         public IList<BiasRow> BiasRows { get; set; }
         public int BiasSessionId { get; set; }
+
+        public BiasReport()
+        {
+            BiasRows = new List<BiasRow>();
+        }
     }
 }

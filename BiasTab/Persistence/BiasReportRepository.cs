@@ -18,7 +18,7 @@ namespace BiasTab.Persistence
 
     public class BiasReportRepository:IBiasReportRepository
     {
-        private static ICouchbaseClient _couchbaseClient = new CouchbaseClient();
+
         private static List<BiasReport> _biasReports = GenerateTestData();
 
         private static List<BiasReport> GenerateTestData()
@@ -30,11 +30,8 @@ namespace BiasTab.Persistence
             biasReport.BiasRows.Add(new BiasRow{BiasSessionId = 1,BenchmarkWeight = .3m,Ticker = "C"});
             biasReports.Add(biasReport);
             return biasReports;
-        } 
-        public BiasReportRepository(ICouchbaseClient couchbaseClient)
-        {
-            _couchbaseClient = couchbaseClient;
         }
+
         public BiasRow GetBiasRow(int biasReportSessionId, string ticker)
         {
             var biasReport = _biasReports.First(bs => bs.BiasSessionId == biasReportSessionId);

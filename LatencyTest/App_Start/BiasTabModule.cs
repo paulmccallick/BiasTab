@@ -1,5 +1,6 @@
 ﻿using BiasTab.Persistence;
 using BiasTab.Services;
+using BiasTab.Web.Api;
 using Ninject.Modules;
 
 namespace BiasTab.Web.App_Start
@@ -10,7 +11,7 @@ namespace BiasTab.Web.App_Start
         {
             Kernel.Bind<IBiasReportRepository>().To<BiasReportRepository>();
             Kernel.Bind<IBiasReportService>().To<BiasReportService>();
-            
+
         }
     }
 }

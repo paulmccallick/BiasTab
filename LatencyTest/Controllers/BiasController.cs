@@ -1,10 +1,15 @@
 ﻿using System.Threading;
 using System.Web.Mvc;
+using BiasTab.Persistence;
 
 namespace BiasTab.Web.Controllers
 {
     public class BiasController : Controller
     {
+        public BiasController()
+        {
+            
+        }
         //
         // GET: /Bias/
 

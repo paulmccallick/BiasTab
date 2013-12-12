@@ -20,8 +20,8 @@ namespace BiasTab.Web.App_Start
         {
             if (_resolver == null)
                 throw new ObjectDisposedException("this", "This scope has been disposed");
-
-            return _resolver.TryGet(serviceType);
+            var result = _resolver.TryGet(serviceType);
+            return result;
         }
 
         public System.Collections.Generic.IEnumerable<object> GetServices(Type serviceType)
