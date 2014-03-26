@@ -16,7 +16,7 @@ namespace BiasTab.Web.Api
         }
 
 
-        public BiasRow PostBiasTrade(BiasTradeEvent tradeEvent)
+        public BiasTradeEventResult PostBiasTrade(BiasTradeEvent tradeEvent)
         {
             return _biasReportService.UpdateTradeRow(tradeEvent);
         }

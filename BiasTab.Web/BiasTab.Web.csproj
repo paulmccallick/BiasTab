@@ -236,6 +236,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Scripts\NewFolder1\" />
+    <Folder Include="Scripts\NewFolder2\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

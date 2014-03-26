@@ -53,10 +53,12 @@
   <ItemGroup>
     <Compile Include="Models\BiasReport.cs" />
     <Compile Include="Models\BiasRow.cs" />
+    <Compile Include="Models\Sector.cs" />
     <Compile Include="Persistence\BiasReportRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\BiasReportService.cs" />
     <Compile Include="Services\BiasTradeEvent.cs" />
+    <Compile Include="Services\BiasTradeEventResult.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

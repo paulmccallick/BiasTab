@@ -11,18 +11,22 @@
                 benchmarkWeight: ko.observable(biasRow.BenchmarkWeight)
             };
         }));
+        self.sectors = ko.observableArray();
         
         self.biasSessionId = ko.observable(biasReport.BiasSessionId);
 
         self.tradeValueChanged = function (biasRow) {
 
             var biasTradeEvent = { BiasSessionId: self.biasSessionId(), TradeAmount: biasRow.tradeCount, Ticker: biasRow.ticker };
-            $.postJSON("/api/BiasTrade", biasTradeEvent, function (updatedBiasRow) {
-                biasRow.benchmarkWeight(updatedBiasRow.BenchmarkWeight);
+            $.postJSON("/api/BiasTrade", biasTradeEvent, function (updateResult) {
+                console.log(updateResult);
+                biasRow.benchmarkWeight(updateResult.BiasRow.BenchmarkWeight);
+                self.sectors(updateResult.Sectors);
             });
         };
         
     }
+
 
     jQuery.extend({
         postJSON: function (url, data, callback) {
@@ -47,8 +51,45 @@
 <form method="POST">
  
     
-    
-    <div data-bind="foreach: biasRows">
-        <div><span data-bind="text:ticker"></span><input type="text" data-bind="value:tradeCount, valueUpdate: 'keyup', event: { change: $parent.tradeValueChanged } "/><span data-bind="text:benchmarkWeight"></span></div>
-    </div>
+    <table>
+        <thead>
+            <tr>
+                <th>ticker</th>
+                <th>tradeCount</th>
+                <th>benchmarkWeight</th>
+            </tr>
+        </thead>
+
+        <tbody data-bind="foreach: biasRows">
+            <tr>
+                <td data-bind="text:ticker"></td>
+                <td>
+                    <input type="text" data-bind="value:tradeCount, valueUpdate: 'keyup', event: { change: $parent.tradeValueChanged } " />
+                </td>
+                <td data-bind="text:benchmarkWeight"></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table>
+
+    </table>
 </form>
+
+<h2>Sectors</h2>
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Weight</th>
+        </tr>
+    </thead>
+
+    <tbody data-bind="foreach: sectors">
+        <tr>
+            <td data-bind="text:Name"></td>
+            <td data-bind="text:Weight" ></td>
+        </tr>
+    </tbody>
+</table>
+

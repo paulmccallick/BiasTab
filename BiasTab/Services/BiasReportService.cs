@@ -10,7 +10,7 @@ namespace BiasTab.Services
 {
     public interface IBiasReportService
     {
-        BiasRow UpdateTradeRow(BiasTradeEvent tradeEvent);
+        BiasTradeEventResult UpdateTradeRow(BiasTradeEvent tradeEvent);
     }
 
     public class BiasReportService : IBiasReportService
@@ -22,13 +22,17 @@ namespace BiasTab.Services
             _biasReportRepository = biasReportRepository;
         }
 
-        public  BiasRow UpdateTradeRow(BiasTradeEvent tradeEvent)
+        public  BiasTradeEventResult UpdateTradeRow(BiasTradeEvent tradeEvent)
         {
-            var biasRow = _biasReportRepository.GetBiasRow(tradeEvent.BiasSessionId, tradeEvent.Ticker);
+            var biasReport = _biasReportRepository.GetBiasReport(tradeEvent.BiasSessionId);
+            var biasRow = biasReport.BiasRows.First(br => br.Ticker == tradeEvent.Ticker);
             biasRow.TradeCount = tradeEvent.TradeAmount;
             biasRow.BenchmarkWeight = tradeEvent.TradeAmount * .02m;
             _biasReportRepository.SaveBiasRow(biasRow);
-            return biasRow;
+            var sectorList = biasReport.BiasRows
+                .GroupBy(br => br.Sector)
+                .Select(g => new Sector { Name = g.Key, Weight = g.Sum(br => br.BenchmarkWeight) });
+            return new BiasTradeEventResult { BiasRow = biasRow, Sectors = sectorList.ToList() };
 
         }
 

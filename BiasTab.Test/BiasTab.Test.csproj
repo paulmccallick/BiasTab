@@ -47,6 +47,7 @@
   <ItemGroup>
     <Compile Include="BiasReportRepositoryTest.cs" />
     <Compile Include="BiasReportServiceTest.cs" />
+    <Compile Include="BiasTabIntegrationTEst.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

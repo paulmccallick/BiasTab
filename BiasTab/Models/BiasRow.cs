@@ -12,5 +12,6 @@ namespace BiasTab.Models
         public decimal BenchmarkWeight { get; set; }
         public int TradeCount { get; set; }
         public int BiasSessionId { get; set; }
+        public string Sector { get; set; }
     }
 }
