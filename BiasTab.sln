@@ -1,6 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BiasTab.Web", "BiasTab.Web\BiasTab.Web.csproj", "{E0E301E6-D406-4E91-A868-F99142FB13CA}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BiasTab", "BiasTab\BiasTab.csproj", "{25EE3DAD-BB1E-47B2-9414-32B19CF02426}"
@@ -8,6 +10,19 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BiasTab.Test", "BiasTab.Test\BiasTab.Test.csproj", "{DA503ED4-EB13-42F3-BA8F-53A16F6F6B6F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BiasTab.Web.Test", "BiasTab.Web.Test\BiasTab.Web.Test.csproj", "{B2A94193-AD63-4C12-8B91-F4BAD4FDB1D7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NodeJSTests", "NodeJSTests", "{B6841D5F-3B27-4F4E-ADA0-2685CC03F0B4}"
+	ProjectSection(SolutionItems) = preProject
+		NodeJSTests\test_bias_view_model.js = NodeJSTests\test_bias_view_model.js
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{02286986-D1A9-4134-8C2C-D839B6AA9630}"
+	ProjectSection(SolutionItems) = preProject
+		grunt-cli.js = grunt-cli.js
+		gruntfile.js = gruntfile.js
+		package.json = package.json
+		runGrunt.bat = runGrunt.bat
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
