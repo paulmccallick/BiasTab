@@ -19,14 +19,14 @@ namespace BiasTab.Web.Test
         {
             var service = Substitute.For<IBiasReportService>();
             var tradeEvent = new BiasTradeEvent {Ticker = "A", BiasSessionId = 3, TradeAmount = 5};
-            var biasRow = new BiasRow();
-            service.UpdateTradeRow(tradeEvent).Returns(biasRow);
+            var biasTradeEventResult = new BiasTradeEventResult();
+            service.UpdateTradeRow(tradeEvent).Returns(biasTradeEventResult);
 
             var controller = new BiasTradeController(service);
             var row = controller.PostBiasTrade(tradeEvent);
 
             service.Received().UpdateTradeRow(tradeEvent);
-            Assert.That(row,Is.SameAs(biasRow));
+            Assert.That(row,Is.SameAs(biasTradeEventResult));
         }
     }
 }
