@@ -15,12 +15,19 @@ namespace BiasTab.Web.Test
         [Test]
         public void RunTheWebServer()
         {
+            throw new Exception("asdf");
             const string applicationPath = @"..\..\..\BiasTab.Web";
             StartServer(applicationPath);
             Console.WriteLine(NormalizeUrl("/"));
             while(true)
                 Thread.Sleep(100);
             
+        }
+
+        public async Task<object> Edgy(object input)
+        {
+            Console.WriteLine("from inside .net");
+            return "a value from .net";
         }
     }
 }

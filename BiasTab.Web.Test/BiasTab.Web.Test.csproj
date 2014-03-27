@@ -52,6 +52,7 @@
   <ItemGroup>
     <Compile Include="BiasTabControllerTest.cs" />
     <Compile Include="CassiniDevIntegrationTest.cs" />
+    <Compile Include="JavaScriptHandle.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

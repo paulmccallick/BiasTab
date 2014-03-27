@@ -3,7 +3,8 @@
   "version": "0.0.1",
   "private": true,
   "dependencies": {
-    "knockout": "~3.0.0"
+    "knockout": "~3.0.0",
+    "edge": "~0.7.14"
   },
   "devDependencies": {
     "mocha": "~1.16.2",
