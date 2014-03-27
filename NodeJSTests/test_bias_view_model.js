@@ -1,4 +1,4 @@
-var BiasViewModel = require('../BiasTab.Web/Scripts/Bias/bias_tab');
+var BiasViewModel = require('../BiasTab.Web/Scripts/Bias/bias_view_model');
 require('should');
 ko = require('knockout');
 
