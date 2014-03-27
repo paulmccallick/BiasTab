@@ -10,6 +10,7 @@
     "should": "~2.1.1",
     "grunt": "~0.4.4",
     "browserify": "~3.33.0",
-    "grunt-browserify": "~2.0.1"
+    "grunt-browserify": "~2.0.1",
+    "grunt-contrib-watch": "~0.6.1"
   }
 }
