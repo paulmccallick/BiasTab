@@ -1,7 +1,12 @@
-﻿function BiasViewModel(biasReport) {
+﻿var server = require('../server');
+var ko = require('knockout');
+
+
+function BiasViewModel(options) {
     var self = this;
-    
-    self.biasRows = ko.observableArray(ko.utils.arrayMap(biasReport.BiasRows, function (biasRow) {
+
+    baseUrl = options.baseUrl;
+    self.biasRows = ko.observableArray(ko.utils.arrayMap(options.biasReport.BiasRows, function (biasRow) {
         return {
             ticker: ko.observable(biasRow.Ticker),
             tradeCount: ko.observable(biasRow.TradeCount),
@@ -10,15 +15,19 @@
     }));
     self.sectors = ko.observableArray();
 
-    self.biasSessionId = ko.observable(biasReport.BiasSessionId);
+    self.biasSessionId = ko.observable(options.biasReport.BiasSessionId);
 
-    self.tradeValueChanged = function (biasRow) {
+    self.tradeCount = ko.computed(function() {
+        return self.biasRows().length;
+    });
 
-        var biasTradeEvent = { BiasSessionId: self.biasSessionId(), TradeAmount: biasRow.tradeCount, Ticker: biasRow.ticker };
-        $.postJSON("/api/BiasTrade", biasTradeEvent, function (updateResult) {
-            console.log(updateResult);
+    self.tradeValueChanged = function (biasRow, callback) {
+        
+        var biasTradeEvent = { BiasSessionId: self.biasSessionId(), TradeAmount: biasRow.tradeCount(), Ticker: biasRow.ticker() };
+        server.postJSON(baseUrl + "/api/BiasTrade", biasTradeEvent, function (updateResult) {
             biasRow.benchmarkWeight(updateResult.BiasRow.BenchmarkWeight);
             self.sectors(updateResult.Sectors);
+            callback();
         });
     };
 

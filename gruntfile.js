@@ -19,7 +19,8 @@ module.exports = function(grunt) {
                 src: ['./BiasTab.Web/Scripts/Bias/bias_view_model.js'],
                 dest: './BiasTab.Web/Scripts/bundle.js',
                 options: {
-                    alias: ['./BiasTab.Web/Scripts/Bias/bias_view_model.js:bias_view_model']
+                    alias: ['./BiasTab.Web/Scripts/Bias/bias_view_model.js:bias_view_model'],
+                    external: ['jquery']
                 }
             }
         },

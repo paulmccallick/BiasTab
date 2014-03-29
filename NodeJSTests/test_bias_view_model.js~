@@ -1,7 +1,5 @@
-var BiasViewModel = require('../BiasTab.Web/Scripts/Bias/bias_view_model');
+var BiasViewModel = require('..\BiasTab.Web\Scripts\Bias\bias_tab');
 require('should');
-ko = require('knockout');
-
 
 describe('BiasViewModel', function(){
 	var biasReport = {
@@ -9,9 +7,9 @@ describe('BiasViewModel', function(){
 		BiasRows: []
 	};
 	var bvm = new BiasViewModel(biasReport);
-
+	
 	it('should set the BiasSessionId correctly', function(){
-	    bvm.biasSessionId().should.equal(5);
+		bvm.BiasSessionId().should.equal(5);
 	});
 	
 });
