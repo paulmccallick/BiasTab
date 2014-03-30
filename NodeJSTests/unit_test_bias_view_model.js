@@ -28,24 +28,26 @@ describe('BiasViewModel', function(){
 
     describe('when a trade is updated', function () {
         var jsonArg;
-        var serverMock = {
-            postJSON: function(url, data, callback) {
-                var serverData  = {
-                    Sectors: 'sectors',
-                    BiasRow: { BenchmarkWeight: .05}
-                }
-                jsonArg = data;
-                callback(serverData);
-            }
-        };
+
         var bvm;
         
         before(function (done) {
+            var serverMock = {
+                postJSON: function (url, data, callback) {
+                    var serverData = {
+                        Sectors: 'sectors',
+                        BiasRow: { BenchmarkWeight: .05 }
+                    }
+                    jsonArg = data;
+                    callback(serverData);
+                    done();
+                }
+            };
             mockery.registerMock('../server', serverMock);
             mockery.enable({ useCleanCache: true });
             var BiasViewModel = require('../BiasTab.Web/Scripts/Bias/bias_view_model');
             bvm = new BiasViewModel(options);
-            bvm.tradeValueChanged(bvm.biasRows()[0], done);
+            bvm.tradeValueChanged(bvm.biasRows()[0]);
         });
 
         it('should update the bias row from the server', function () {

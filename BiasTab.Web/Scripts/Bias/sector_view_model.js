@@ -1,5 +1,5 @@
-﻿ko = require('knockout');
-pubsub = require('pubsubjs');
+﻿var ko = require('knockout');
+var pubsub = require('pubsub-js');
 
 function SectorViewModel() {
     var self = this;

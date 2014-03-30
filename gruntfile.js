@@ -15,6 +15,13 @@ module.exports = function(grunt) {
             },
         },
         browserify: {
+            vendor: {
+                options: {
+                    require: ['jquery', 'knockout'],
+                },
+                src: [],
+                dest: './BiasTab.Web/Scripts/vendor.js'
+            },
             app: {
                 src: ['./BiasTab.Web/Scripts/Bias/*.js'],
                 dest: './BiasTab.Web/Scripts/biasapp.js',
@@ -24,8 +31,7 @@ module.exports = function(grunt) {
                     ],
                     external: ['jquery','knockout']
                 }
-            },
-
+            }
         },
     });
 

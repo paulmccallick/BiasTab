@@ -1,17 +1,18 @@
 ﻿@{
     ViewBag.Title = "Index";
 }
-
+<script src="/Scripts/vendor.js"></script>
 <script src="/Scripts/biasapp.js"></script>
 
 <script type="text/javascript">
     var BiasViewModel = require('bias_view_model');
     var SectorViewModel = require('sector_view_model');
+    var ko = require('knockout');
 
     $(window).load(function () {
         $.getJSON("/api/BiasReport/1", function (callbackData) {
-
-            var biasViewModel = new BiasViewModel(callbackData);
+            var options = {biasReport:callbackData,baseUrl:''}
+            var biasViewModel = new BiasViewModel(options);
             ko.applyBindings(biasViewModel, $("#bias_table")[0]);
             var sectorViewModel = new SectorViewModel();
             ko.applyBindings(sectorViewModel, $("#sector_div")[0]);

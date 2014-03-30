@@ -21,13 +21,12 @@ function BiasViewModel(options) {
         return self.biasRows().length;
     });
 
-    self.tradeValueChanged = function (biasRow, callback) {
+    self.tradeValueChanged = function (biasRow) {
         
         var biasTradeEvent = { BiasSessionId: self.biasSessionId(), TradeAmount: biasRow.tradeCount(), Ticker: biasRow.ticker() };
         server.postJSON(baseUrl + "/api/BiasTrade", biasTradeEvent, function (updateResult) {
             biasRow.benchmarkWeight(updateResult.BiasRow.BenchmarkWeight);
             self.sectors(updateResult.Sectors);
-            callback();
         });
     };
 
