@@ -28,7 +28,7 @@ describe('BiasViewModel', function(){
 
     describe('when a trade is updated', function () {
         var jsonArg;
-
+        var publishArgs;
         var bvm;
         
         before(function (done) {
@@ -43,20 +43,33 @@ describe('BiasViewModel', function(){
                     done();
                 }
             };
-            mockery.registerMock('../server', serverMock);
+            var pubsubMock = {
+                publish: function(message, data) {
+                    publishArgs = { message: message, data: data };
+                }
+            }
             mockery.enable({ useCleanCache: true });
+            mockery.registerMock('./server', serverMock);
+            mockery.registerMock('pubsub-js', pubsubMock);
+            
             var BiasViewModel = require('../BiasTab.Web/Scripts/Bias/bias_view_model');
             bvm = new BiasViewModel(options);
             bvm.tradeValueChanged(bvm.biasRows()[0]);
+        });
+
+        it('should call postJSON with the correct arguments', function () {
+            jsonArg.TradeAmount.should.equal(2);
         });
 
         it('should update the bias row from the server', function () {
             bvm.biasRows()[0].benchmarkWeight().should.equal(.05);
         });
 
-        it('should call postJSON with the correct arguments', function () {
-            jsonArg.TradeAmount.should.equal(2);
+        it('should publish the updated sector data', function() {
+            publishArgs.data.should.equal('sectors');
+            publishArgs.message.should.equal('SECTOR_UPDATES');
         });
+
     });
 
 });

@@ -1,5 +1,6 @@
 ﻿var server = require('./server');
 var ko = require('knockout');
+var pubsub = require('pubsub-js');
 
 
 function BiasViewModel(options) {
@@ -26,7 +27,7 @@ function BiasViewModel(options) {
         var biasTradeEvent = { BiasSessionId: self.biasSessionId(), TradeAmount: biasRow.tradeCount(), Ticker: biasRow.ticker() };
         server.postJSON(baseUrl + "/api/BiasTrade", biasTradeEvent, function (updateResult) {
             biasRow.benchmarkWeight(updateResult.BiasRow.BenchmarkWeight);
-            self.sectors(updateResult.Sectors);
+            pubsub.publish('SECTOR_UPDATES',updateResult.Sectors);
         });
     };
 
