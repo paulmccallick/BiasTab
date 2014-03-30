@@ -56,6 +56,7 @@
 </form>
 
 <h2>Sectors</h2>
+<div data-bind="text:count"></div>
 <table>
     <thead>
         <tr>
@@ -66,8 +67,8 @@
 
     <tbody data-bind="foreach: sectors">
         <tr>
-            <td data-bind="text:Name"></td>
-            <td data-bind="text:Weight" ></td>
+            <td data-bind="text:name"></td>
+            <td data-bind="text:weight" ></td>
         </tr>
     </tbody>
 </table>
