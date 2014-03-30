@@ -2,35 +2,27 @@
     ViewBag.Title = "Index";
 }
 
-<script src="/Scripts/bundle.js"></script>
+<script src="/Scripts/biasapp.js"></script>
 
 <script type="text/javascript">
     var BiasViewModel = require('bias_view_model');
+    var SectorViewModel = require('sector_view_model');
 
-    jQuery.extend({
-        postJSON: function (url, data, callback) {
-            return jQuery.post(url, data, callback, "json");
-        }
-    });
-    window.alert('h');
     $(window).load(function () {
         $.getJSON("/api/BiasReport/1", function (callbackData) {
 
-            var vm = new BiasViewModel(callbackData);
-            ko.applyBindings(vm);
+            var biasViewModel = new BiasViewModel(callbackData);
+            ko.applyBindings(biasViewModel, $("#bias_table")[0]);
+            var sectorViewModel = new SectorViewModel();
+            ko.applyBindings(sectorViewModel, $("#sector_div")[0]);
         });
 
 
     });
 </script>
-
-
-
 <h2>Bias Session: <span data-bind="text: biasSessionId"></span></h2>
 <form method="POST">
- 
-    
-    <table>
+    <table id="bias_table">
         <thead>
             <tr>
                 <th>ticker</th>
@@ -49,27 +41,24 @@
             </tr>
         </tbody>
     </table>
-
-    <table>
-
-    </table>
 </form>
 
 <h2>Sectors</h2>
-<div data-bind="text:count"></div>
-<table>
-    <thead>
-        <tr>
-            <th>Name</th>
-            <th>Weight</th>
-        </tr>
-    </thead>
+<div id="sector_div">
+    <div data-bind="text:count"></div>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Weight</th>
+            </tr>
+        </thead>
 
-    <tbody data-bind="foreach: sectors">
-        <tr>
-            <td data-bind="text:name"></td>
-            <td data-bind="text:weight" ></td>
-        </tr>
-    </tbody>
-</table>
-
+        <tbody data-bind="foreach: sectors">
+            <tr>
+                <td data-bind="text:name"></td>
+                <td data-bind="text:weight"></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
