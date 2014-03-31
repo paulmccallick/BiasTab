@@ -4,7 +4,6 @@
   "private": true,
   "description": "the javascript that runs the sextant bias tab",
   "dependencies": {
-    "edge": "~0.7.14",
     "pubsubjs": "~0.3.5",
     "jquery": "~2.1.0",
     "knockout": "~3.1.0",
@@ -18,10 +17,9 @@
     "grunt-browserify": "~2.0.1",
     "grunt-contrib-watch": "~0.6.1",
     "sinon": "~1.9.0",
-    "jsdom": "~0.10.3",
-    "jsondom": "~0.4.0",
     "mockery": "~1.4.0",
     "mocha-teamcity-reporter": "0.0.2",
-    "grunt-mocha-test": "~0.10.0"
+    "grunt-mocha-test": "~0.10.0",
+    "grunt-cli": "~0.1.13"
   }
 }
