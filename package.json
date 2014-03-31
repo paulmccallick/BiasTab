@@ -20,6 +20,8 @@
     "sinon": "~1.9.0",
     "jsdom": "~0.10.3",
     "jsondom": "~0.4.0",
-    "mockery": "~1.4.0"
+    "mockery": "~1.4.0",
+    "mocha-teamcity-reporter": "0.0.2",
+    "grunt-mocha-test": "~0.10.0"
   }
 }
