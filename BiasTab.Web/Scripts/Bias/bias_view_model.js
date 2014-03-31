@@ -6,7 +6,6 @@ var pubsub = require('pubsub-js');
 function BiasViewModel(options) {
     var self = this;
 
-    baseUrl = options.baseUrl;
     self.biasRows = ko.observableArray(ko.utils.arrayMap(options.biasReport.BiasRows, function (biasRow) {
         return {
             ticker: ko.observable(biasRow.Ticker),
@@ -25,14 +24,12 @@ function BiasViewModel(options) {
     self.tradeValueChanged = function (biasRow) {
         
         var biasTradeEvent = { BiasSessionId: self.biasSessionId(), TradeAmount: biasRow.tradeCount(), Ticker: biasRow.ticker() };
-        server.postJSON(baseUrl + "/api/BiasTrade", biasTradeEvent, function (updateResult) {
+        server.postJSON("/api/BiasTrade", biasTradeEvent, function (updateResult) {
             biasRow.benchmarkWeight(updateResult.BiasRow.BenchmarkWeight);
             pubsub.publish('SECTOR_UPDATES',updateResult.Sectors);
         });
     };
 
 }
-
-
 
 module.exports = BiasViewModel;

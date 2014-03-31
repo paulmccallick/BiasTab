@@ -5,21 +5,12 @@
 <script src="/Scripts/biasapp.js"></script>
 
 <script type="text/javascript">
-    var BiasViewModel = require('bias_view_model');
-    var SectorViewModel = require('sector_view_model');
-    var ko = require('knockout');
+    var biasapp = require('bias_app');
 
     $(window).load(function () {
-        $.getJSON("/api/BiasReport/1", function (callbackData) {
-            var options = {biasReport:callbackData,baseUrl:''}
-            var biasViewModel = new BiasViewModel(options);
-            ko.applyBindings(biasViewModel, $("#bias_table")[0]);
-            var sectorViewModel = new SectorViewModel();
-            ko.applyBindings(sectorViewModel, $("#sector_div")[0]);
-        });
-
-
+        biasapp.initialize({ applyBindings: true });
     });
+
 </script>
 <h2>Bias Session: <span data-bind="text: biasSessionId"></span></h2>
 <form method="POST">

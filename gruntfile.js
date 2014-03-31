@@ -26,9 +26,7 @@ module.exports = function(grunt) {
                 src: ['./BiasTab.Web/Scripts/Bias/*.js'],
                 dest: './BiasTab.Web/Scripts/biasapp.js',
                 options: {
-                    alias: ['./BiasTab.Web/Scripts/Bias/bias_view_model.js:bias_view_model',
-                        './BiasTab.Web/Scripts/Bias/sector_view_model.js:sector_view_model'
-                    ],
+                    alias: ['./BiasTab.Web/Scripts/Bias/bias_app.js:bias_app'],
                     external: ['jquery','knockout']
                 }
             }

@@ -13,8 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BiasTab.Web.Test", "BiasTab
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NodeJSTests", "NodeJSTests", "{B6841D5F-3B27-4F4E-ADA0-2685CC03F0B4}"
 	ProjectSection(SolutionItems) = preProject
+		bias_app_functional_tests.js = bias_app_functional_tests.js
 		NodeJSTests\run_bias_web.js = NodeJSTests\run_bias_web.js
-		NodeJSTests\test_bias_view_model.js = NodeJSTests\test_bias_view_model.js
 		NodeJSTests\testEdge.js = NodeJSTests\testEdge.js
 		NodeJSTests\unit_test_bias_view_model.js = NodeJSTests\unit_test_bias_view_model.js
 		NodeJSTests\unit_test_sector_view_model.js = NodeJSTests\unit_test_sector_view_model.js
