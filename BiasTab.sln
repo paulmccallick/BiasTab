@@ -15,7 +15,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NodeJSTests", "NodeJSTests"
 	ProjectSection(SolutionItems) = preProject
 		bias_app_functional_tests.js = bias_app_functional_tests.js
 		NodeJSTests\run_bias_web.js = NodeJSTests\run_bias_web.js
-		NodeJSTests\testEdge.js = NodeJSTests\testEdge.js
 		NodeJSTests\unit_test_bias_view_model.js = NodeJSTests\unit_test_bias_view_model.js
 		NodeJSTests\unit_test_sector_view_model.js = NodeJSTests\unit_test_sector_view_model.js
 	EndProjectSection
@@ -23,6 +22,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{02286986-D1A9-4134-8C2C-D839B6AA9630}"
 	ProjectSection(SolutionItems) = preProject
 		grunt-cli.js = grunt-cli.js
+		grunt-tests.js = grunt-tests.js
 		gruntfile.js = gruntfile.js
 		package.json = package.json
 		runGrunt.bat = runGrunt.bat
