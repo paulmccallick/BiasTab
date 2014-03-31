@@ -1,4 +1,4 @@
-﻿$ = require('jquery');
+﻿var $ = require('jquery');
 
 module.exports = function () {
     return {

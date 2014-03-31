@@ -10,9 +10,7 @@ describe('BiasViewModel', function(){
         }
     }
 
-    afterEach(function() {
-        mockery.disable();
-    });
+
     describe('when calling constructor', function () {
         var BiasViewModel = require('../BiasTab.Web/Scripts/Bias/bias_view_model');
         var bvm = new BiasViewModel(options);
@@ -27,10 +25,11 @@ describe('BiasViewModel', function(){
     });
 
     describe('when a trade is updated', function () {
+
         var jsonArg;
         var publishArgs;
         var bvm;
-        
+
         before(function (done) {
             var serverMock = {
                 postJSON: function (url, data, callback) {
@@ -48,6 +47,9 @@ describe('BiasViewModel', function(){
                     publishArgs = { message: message, data: data };
                 }
             }
+
+            mockery.deregisterAll();
+            mockery.disable();
             mockery.enable({ useCleanCache: true });
             mockery.registerMock('./server', serverMock);
             mockery.registerMock('pubsub-js', pubsubMock);

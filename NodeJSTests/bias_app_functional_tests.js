@@ -1,11 +1,12 @@
 require('should');
-mockery = require('mockery');
+var mockery = require('mockery');
+
+
+
 describe('Given a bias report', function() {
     
-    afterEach(function () {
-        mockery.disable();
-    });
-    describe('when the user updates a bias row', function() {
+
+    describe('when the user updates a bias row', function () {
         var serverMock = {
             postJSON: function(url, data, callback) {
                 callback({});
@@ -14,8 +15,10 @@ describe('Given a bias report', function() {
                 callback({});
             }
         }
-        mockery.enable();
-        mockery.register('./server', serverMock);
+        mockery.deregisterAll();
+        mockery.disable();
+        mockery.enable({ useCleanCache: true });
+        mockery.registerMock('./server', serverMock);
         var biasApp = require('../BiasTab.Web/Scripts/Bias/bias_app');
         it('determines the appropriate sector weights', function() {
             biasApp.initialize({ applyBindings: false });

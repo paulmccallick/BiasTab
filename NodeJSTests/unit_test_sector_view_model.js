@@ -3,20 +3,23 @@ require('should');
 
 describe('SectorViewModel', function() {
 
-    afterEach(function () {
-        mockery.disable();
-    });
+
 
     describe('when sector updates are published', function () {
-        
         var messageCallback;
-        mockery.enable();
+        
         var pubsubmock = {
-            subscribe: function(messageToSubscribeTo, callback) {
+            subscribe: function (messageToSubscribeTo, callback) {
+                
                 messageCallback = callback;
             }
         };
-        mockery.registerMock('pubsubjs', pubsubmock);
+        mockery.deregisterAll();
+        mockery.disable();
+        mockery.enable({ useCleanCache: true });
+
+        mockery.registerMock('pubsub-js', pubsubmock);
+
         var SectorViewModel = require('../BiasTab.Web/Scripts/Bias/sector_view_model');
         var sectors = [{ Name: 'A', Weight: 1 }, { Name: 'B', Weight: 2 }];
         var svm = new SectorViewModel();

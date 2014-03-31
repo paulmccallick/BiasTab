@@ -9,12 +9,19 @@ module.exports = function(grunt) {
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
         mochaTest: {
-            test: {
+            teamcity: {
                 options: {
                     reporter: 'mocha-teamcity-reporter'
                 },
                 src: ['NodeJSTests/*test*.js']
-            }
+            },
+            commandLine: {
+                options: {
+                    reporter: 'List'
+                },
+                src: ['NodeJSTests/*test*.js']
+            },
+
         },
         watch: {
             scripts: {
@@ -49,6 +56,8 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-mocha-test');
 
     // Default task(s).
-    grunt.registerTask('default', ['browserify'],'mochaTest','watch');
+    grunt.registerTask('default', ['browserify']);
+    grunt.registerTask('tctest', ['mochaTest:teamcity']);
+    grunt.registerTask('test', ['mochaTest:commandLine']);
 
 };
