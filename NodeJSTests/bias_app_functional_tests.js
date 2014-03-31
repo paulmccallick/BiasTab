@@ -1,5 +1,5 @@
 require('should');
-var mockery = require('mockery');
+var mockeryHelper = require('./mockery_helper');
 
 
 
@@ -15,9 +15,7 @@ describe('Given a bias report', function() {
                 callback({});
             }
         }
-        mockery.deregisterAll();
-        mockery.disable();
-        mockery.enable({ useCleanCache: true });
+        mockery = mockeryHelper.getCleanMockery();
         mockery.registerMock('./server', serverMock);
         var biasApp = require('../BiasTab.Web/Scripts/Bias/bias_app');
         it('determines the appropriate sector weights', function() {

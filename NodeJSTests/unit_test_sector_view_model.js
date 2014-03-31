@@ -1,4 +1,4 @@
-var mockery = require('mockery');
+var mockeryhelper = require('./mockery_helper');
 require('should');
 
 describe('SectorViewModel', function() {
@@ -14,10 +14,8 @@ describe('SectorViewModel', function() {
                 messageCallback = callback;
             }
         };
-        mockery.deregisterAll();
-        mockery.disable();
-        mockery.enable({ useCleanCache: true });
 
+        mockery = mockeryhelper.getCleanMockery();
         mockery.registerMock('pubsub-js', pubsubmock);
 
         var SectorViewModel = require('../BiasTab.Web/Scripts/Bias/sector_view_model');

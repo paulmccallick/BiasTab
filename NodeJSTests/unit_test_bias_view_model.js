@@ -1,5 +1,5 @@
 
-var mockery = require('mockery');
+var mockeryHelper = require('./mockery_helper');
 require('should');
 
 describe('BiasViewModel', function(){
@@ -48,9 +48,7 @@ describe('BiasViewModel', function(){
                 }
             }
 
-            mockery.deregisterAll();
-            mockery.disable();
-            mockery.enable({ useCleanCache: true });
+            mockery = mockeryHelper.getCleanMockery();
             mockery.registerMock('./server', serverMock);
             mockery.registerMock('pubsub-js', pubsubMock);
             
