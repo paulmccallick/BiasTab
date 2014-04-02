@@ -20,6 +20,7 @@
     "mockery": "~1.4.0",
     "mocha-teamcity-reporter": "0.0.2",
     "grunt-mocha-test": "~0.10.0",
-    "grunt-cli": "~0.1.13"
+    "grunt-cli": "~0.1.13",
+    "lodash": "~2.4.1"
   }
 }

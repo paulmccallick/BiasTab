@@ -13,7 +13,6 @@ function BiasViewModel(options) {
             benchmarkWeight: ko.observable(biasRow.BenchmarkWeight)
         };
     }));
-    self.sectors = ko.observableArray();
 
     self.biasSessionId = ko.observable(options.biasReport.BiasSessionId);
 
