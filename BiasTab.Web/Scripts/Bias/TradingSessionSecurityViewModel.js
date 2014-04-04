@@ -1,11 +1,11 @@
-﻿(function ($) {
+﻿var ko = require('knockout');
+var Big = require('./big.js');
+
+var TradingSessionSecurityViewModel;
+
+TradingSessionSecurityViewModel = (function () {
     "use strict";
 
-    $.extend(true, window, {
-        ViewModels: {
-            TradingSessionSecurityViewModel: TradingSessionSecurityViewModel
-        }
-    });
 
     function TradingSessionSecurityViewModel(portfolioCountryTargetValue) {
         var self = this;
@@ -159,4 +159,8 @@
         self.IsPnoteSell(jsObject.IsPnoteSell);
         return self;
     };
-})($)
+
+    return TradingSessionSecurityViewModel;
+})();
+
+module.exports = TradingSessionSecurityViewModel;

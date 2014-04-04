@@ -7,7 +7,8 @@
     "pubsubjs": "~0.3.5",
     "jquery": "~2.1.0",
     "knockout": "~3.1.0",
-    "pubsub-js": "~1.4.2"
+    "pubsub-js": "~1.4.2",
+    "big.js": "~2.5.0"
   },
   "devDependencies": {
     "mocha": "~1.16.2",
@@ -21,6 +22,7 @@
     "mocha-teamcity-reporter": "0.0.2",
     "grunt-mocha-test": "~0.10.0",
     "grunt-cli": "~0.1.13",
-    "lodash": "~2.4.1"
+    "lodash": "~2.4.1",
+    "mocha-qunit-ui": "~0.1.1"
   }
 }

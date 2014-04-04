@@ -1,5 +1,8 @@
-/// <reference path="~/scripts/imported/big.js" />
-module("TradingSessionSecurityViewModelTests", {
+var TradingSessionSecurityViewModel = require('../BiasTab.Web/Scripts/Bias/TradingSessionSecurityViewModel');
+
+console.log(TradingSessionSecurityViewModel);
+
+QUnit.module("TradingSessionSecurityViewModelTests", {
     setup: function () {
 
     },
@@ -37,7 +40,7 @@ var jsSecurityObject = {
 
 test("ViewModel is initialized", function () {
 
-    var viewModel = new ViewModels.TradingSessionSecurityViewModel(portfolioCountryTargetValue);
+    var viewModel = new TradingSessionSecurityViewModel(portfolioCountryTargetValue);
 
     viewModel.initialize(jsSecurityObject);
 
