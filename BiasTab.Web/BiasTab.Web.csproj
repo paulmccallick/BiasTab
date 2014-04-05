@@ -141,7 +141,7 @@
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Controllers\BiasController.cs" />
+    <Compile Include="Content\Controllers\BiasController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -206,7 +206,7 @@
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\Bias\bias_app.js" />
     <Content Include="Scripts\Bias\bias_view_model.js" />
-    <Content Include="Scripts\Bias\big.js" />
+    <Content Include="Scripts\Vendor\big.js" />
     <Content Include="Scripts\Bias\sector_view_model.js" />
     <Content Include="Scripts\Bias\TradingSessionSecurityViewModel.js" />
     <Content Include="Scripts\Vendor\jquery-1.8.2.js" />

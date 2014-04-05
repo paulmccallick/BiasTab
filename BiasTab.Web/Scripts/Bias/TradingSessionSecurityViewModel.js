@@ -1,5 +1,5 @@
 ﻿var ko = require('knockout');
-var Big = require('./big.js');
+var Big = require('../vendor/big.js');
 
 var TradingSessionSecurityViewModel;
 

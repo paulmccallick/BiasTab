@@ -8,20 +8,34 @@ module.exports = function(grunt) {
     // Project configuration.
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
-        mochaTest: {
-            teamcity: {
+        cafemocha: {
+            teamcity_mocha: {
+                src: ['NodeJSTests/*test*.js'],
                 options: {
                     reporter: 'mocha-teamcity-reporter'
                 },
-                src: ['NodeJSTests/*test*.js']
+
             },
-            commandLine: {
+            teamcity_qunit: {
+                options: {
+                    reporter: 'mocha-teamcity-reporter',
+                    ui: 'mocha-qunit-ui' 
+                },
+                src: ['QUnitTests/*Test*.js']
+            },
+            commandLine_mocha: {
                 options: {
                     reporter: 'List'
                 },
                 src: ['NodeJSTests/*test*.js']
             },
-
+            commandLine_qunit: {
+                options: {
+                    ui:'mocha-qunit-ui',
+                    reporter: 'List',
+                },
+                src: ['QUnitTests/*Test*.js']
+            }
         },
         watch: {
             scripts: {
@@ -53,11 +67,11 @@ module.exports = function(grunt) {
     //
     grunt.loadNpmTasks('grunt-browserify');
     grunt.loadNpmTasks('grunt-contrib-watch');
-    grunt.loadNpmTasks('grunt-mocha-test');
+    grunt.loadNpmTasks('grunt-cafe-mocha');
 
     // Default task(s).
     grunt.registerTask('default', ['browserify']);
-    grunt.registerTask('tctest', ['mochaTest:teamcity']);
-    grunt.registerTask('test', ['mochaTest:commandLine']);
+    grunt.registerTask('tctest', ['cafemocha:teamcity_mocha', 'cafemocha:teamcity_qunit']);
+    grunt.registerTask('test', ['cafemocha:commandLine_mocha', 'cafemocha:commandLine_qunit']);
 
 };
