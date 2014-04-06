@@ -8,6 +8,11 @@
     "knockout": "~3.1.0",
     "pubsub-js": "~1.4.2"
   },
+  "scripts": {
+	//need to do this because the current published version of this reporter is broken.  The local folder contains pull request 16.
+	//this should be replaced when the pull request is accepted merged and published.
+        "preinstall": "npm install ./karma-teamcity-reporter/"
+    },
   "devDependencies": {
     "mocha": "~1.16.2",
     "should": "~2.1.1",
@@ -26,6 +31,7 @@
     "karma-phantomjs-launcher": "~0.1.4",
     "karma-mocha": "~0.1.3",
     "karma-chrome-launcher": "~0.1.3",
-    "karma-browserify": "^0.2.0"
+    "karma-browserify": "^0.2.0",
+    "grunt-karma": "^0.8.2"
   }
 }

@@ -8,6 +8,16 @@ module.exports = function(grunt) {
     // Project configuration.
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
+        karma: {
+            unit: {
+                configFile: 'karma.conf.js',
+                singleRun: true,
+                browsers: ['PhantomJS'],
+                logLevel: 'INFO',
+                autoWatch: false,
+                reporters: ['teamcity']
+            }
+        },
         cafemocha: {
             teamcity_mocha: {
                 src: ['NodeJSTests/*test*.js'],
@@ -68,6 +78,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-browserify');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-cafe-mocha');
+    grunt.loadNpmTasks('grunt-karma');
 
     // Default task(s).
     grunt.registerTask('default', ['browserify']);
