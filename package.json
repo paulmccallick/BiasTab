@@ -9,8 +9,7 @@
     "pubsub-js": "~1.4.2"
   },
   "scripts": {
-	//need to do this because the current published version of this reporter is broken.  The local folder contains pull request 16.
-	//this should be replaced when the pull request is accepted merged and published.
+		"_comment": "need to do this because the current published version of this reporter is broken.  The local folder contains pull request 16. this should be replaced when the pull request is accepted merged and published.",
         "preinstall": "npm install ./karma-teamcity-reporter/"
     },
   "devDependencies": {

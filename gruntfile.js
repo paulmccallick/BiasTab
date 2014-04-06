@@ -56,7 +56,7 @@ module.exports = function(grunt) {
         browserify: {
             vendor: {
                 options: {
-                    require: ['jquery', 'knockout'],
+                    require: ['jquery', 'knockout']
                 },
                 src: [],
                 dest: './BiasTab.Web/Scripts/vendor.js'
