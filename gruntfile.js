@@ -1,21 +1,24 @@
 
-
-
-
-
 module.exports = function(grunt) {
 
     // Project configuration.
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
         karma: {
-            unit: {
+            teamcity: {
                 configFile: 'karma.conf.js',
                 singleRun: true,
                 browsers: ['PhantomJS'],
                 logLevel: 'INFO',
                 autoWatch: false,
                 reporters: ['teamcity']
+            },
+            commandLine: {
+                configFile: 'karma.conf.js',
+                singleRun: false,
+                browsers: ['PhantomJS','Chrome'],
+                logLevel: 'INFO',
+                autoWatch: true
             }
         },
         cafemocha: {
@@ -50,13 +53,13 @@ module.exports = function(grunt) {
         watch: {
             scripts: {
                 files: './BiasTab.Web/Scripts/Bias/*.js',
-                tasks: ['browserify']
+                tasks: ['browserify:app']
             },
         },
         browserify: {
             vendor: {
                 options: {
-                    require: ['jquery', 'knockout']
+                    require: ['jquery', 'knockout','pubsub-js']
                 },
                 src: [],
                 dest: './BiasTab.Web/Scripts/vendor.js'
@@ -67,7 +70,7 @@ module.exports = function(grunt) {
                 dest: './BiasTab.Web/Scripts/biasapp.js',
                 options: {
                     alias: ['./BiasTab.Web/Scripts/Bias/bias_app.js:bias_app'],
-                    external: ['jquery', 'knockout'],
+                    external: ['jquery', 'knockout','pubsub-js'],
                     bundleOptions: { debug: true }
                 }
             }
@@ -83,6 +86,6 @@ module.exports = function(grunt) {
     // Default task(s).
     grunt.registerTask('default', ['browserify']);
     grunt.registerTask('tctest', ['cafemocha:teamcity_mocha', 'cafemocha:teamcity_qunit']);
-    grunt.registerTask('test', ['cafemocha:commandLine_mocha', 'cafemocha:commandLine_qunit']);
+    grunt.registerTask('test', ['cafemocha:commandLine_mocha']);
 
 };

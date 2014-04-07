@@ -6,7 +6,6 @@ var ko = require('knockout');
 module.exports = (function () {
     var self = {};
 
-    
     self.initialize = function(options) {
         server.getJSON('/api/BiasReport/1', function(callbackData) {
             self.biasViewModel = new BiasViewModel({ biasReport: callbackData });
